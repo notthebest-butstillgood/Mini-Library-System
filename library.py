@@ -25,3 +25,27 @@ def write_initial_data():
 
 initialize_library()
 write_initial_data()
+
+#STUDENT B -- "a" append mode
+def append_data():
+    try:
+        f = open("MLS.txt", "a")
+        print("\n===== Add New Book Entries =====")
+        
+        while True:
+            book_no = input("Enter Book No.: ")
+            title = input("Enter Book Title: ")
+
+            f.write(f"Book No. {book_no} | Title: {title}")
+            
+            another = input("Do you want to add another book? (y/n): \n")
+            if another.lower() != 'y':
+                break
+        f.close()
+        print("New book entries added successfully!")
+        
+    except FileNotFoundError:
+        print("\nLibrary file not found! Please initialize the library first.")
+        
+append_data()
+
