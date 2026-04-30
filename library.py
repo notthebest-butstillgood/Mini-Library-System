@@ -67,7 +67,7 @@ def read_library():
 
 read_library()
 
-#STUDENT D -- update the file
+#STUDENT D --- update the file
 
 def update_book():
     try:
