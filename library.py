@@ -64,6 +64,7 @@ def read_library():
 
     except FileNotFoundError:
         print("\nLibrary file not found! Please initialize the library first.")
+
 read_library()
 
 #STUDENT D -- update the file
