@@ -1,5 +1,5 @@
 ===== Welcome to the Mini Library System of Group 10 =====
-Book No. 001 | Title: Learn Computer Programing
-Book No. 002 | Title: Behind the Blue Sky
-Book No. 003 | Title: Data Structure and Algorithms
-Book No. 004 | Title: The Art of Computer Programming
+Book No. 001 | Title: Clean Code | Author: Robert C. Martin
+Book No. 002 | Title: Behind the Blue Sky | Author: Ineryss
+Book No. 003 | Title: Don Quixote| Author: Miguel de Cervantes.
+Book No. 004 | Title: Python Crash Course | Author: Eric Matthes 

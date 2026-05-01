@@ -1,5 +1,3 @@
-# STUDENT A -- "x" and "w"
-
 def initialize_library():
     try:
         f = open("MLS.txt", "x")
@@ -9,47 +7,43 @@ def initialize_library():
     except FileExistsError:
         print("Library file already exists!")
 
-
 def write_initial_data():
     f = open("MLS.txt", "w")
 
     f.write("===== Welcome to the Mini Library System of Group 10 =====\n")
-    f.write("Book No. 001 | Title: Learn Computer Programing\n")
-    f.write("Book No. 002 | Title: Behind the Blue Sky\n")
-    f.write("Book No. 003 | Title: Data Structure and Algorithms\n")
-    f.write("Book No. 004 | Title: The Art of Computer Programming\n")
+    f.write("Book No. 001 | Title: Clean Code | Author: Robert C. Martin\n")
+    f.write("Book No. 002 | Title: Behind the Blue Sky | Author: Ineryss\n")
+    f.write("Book No. 003 | Title: Don Quixote| Author: Miguel de Cervantes.\n")
+    f.write("Book No. 004 | Title: Python Crash Course | Author: Eric Matthes \n")
 
     f.close()
-
+    
     print("Initial data written successfully!\n")
 
 initialize_library()
 write_initial_data()
 
-#STUDENT B -- "a" append mode
 def append_data():
     try:
         f = open("MLS.txt", "a")
-        print("\n===== Add New Book Entries =====")
+        print("\n===== Add New Book Entries =====\n")
         
         while True:
             book_no = input("Enter Book No.: ")
             title = input("Enter Book Title: ")
+            author = input("Enter the Author: ")
 
-            f.write(f"Book No. {book_no} | Title: {title}")
+            f.write(f"Book No. {book_no} | Title: {title} | Author: {author}\n")
             
-            another = input("Do you want to add another book? (y/n): \n")
+            another = input("Do you want to add another book? (y/n): ")
             if another.lower() != 'y':
                 break
         f.close()
-        print("New book entries added successfully!")
+        print("\nNew book entries added successfully!")
         
     except FileNotFoundError:
         print("\nLibrary file not found! Please initialize the library first.")
-        
-append_data()
 
-#STUDENT C -- "r" and print a count of lines
 def read_library():
     try:
         f = open("MLS.txt", "r")
@@ -64,10 +58,6 @@ def read_library():
 
     except FileNotFoundError:
         print("\nLibrary file not found! Please initialize the library first.")
-
-read_library()
-
-#STUDENT D -- update the file
 
 def update_book():
     try:
@@ -87,7 +77,8 @@ def update_book():
         for line in lines:
             if f"Book No. {book_no}" in line:
                 new_title = input("Enter new book title: ")
-                updated_lines.append(f"Book No. {book_no} | Title: {new_title}\n")
+                author = input("Enter the Author: ")
+                updated_lines.append(f"Book No. {book_no} | Title: {new_title} | Author: {author}\n")
                 found = True
             else:
                 updated_lines.append(line)
@@ -102,7 +93,6 @@ def update_book():
 
     except FileNotFoundError:
         print("File not found.")
-update_book()
 
 def search_book():
     try:
@@ -112,20 +102,18 @@ def search_book():
 
         print("\n===== SEARCH RESULT =====\n")
 
-
         for line in f:
             if keyword.lower() in line.lower():
                 print(line.strip())
-            found = True
+                found = True
 
-            if not found:
-                print("Book not found!")
+        if not found:
+                print("Book not found! Search again. ")
 
         f.close()
 
     except FileNotFoundError:
         print("\nLibrary file not found! Please initialize the library first.")
-search_book()
 
 def delete_book():
     try:
@@ -137,19 +125,17 @@ def delete_book():
 
         for line in lines:
             print(line.strip())
-
-    except FileNotFoundError:
-        print("\nLibrary file not found! Please initialize the library first.")
-
-    delete_book_no = input("\nEnter Book No. to delete: ")
-    updated_lines = []
-    found = False
-
-    for line in lines:
-            if f"Book No. {delete_book_no}" not in line:
+            
+        delete_book_no = input("\nEnter Book No. to delete: ")
+        updated_lines = []
+        found = False
+        
+        for line in lines:
+            if f"Book No. {delete_book_no}" in line:
                 updated_lines.append(line)
-    else:
-        found = True
+                
+        else:
+            found = True
 
         if found:
             f = open("MLS.txt", "w")
@@ -159,5 +145,40 @@ def delete_book():
 
         else:
             print("\nBook not found!")
+            
+    except FileNotFoundError:
+        print("\nLibrary file not found! Please initialize the library first.")
 
-delete_book()
+while True:
+
+    print("\n===== MINI LIBRARY SYSTEM MENU =====\n")
+    print("1. Add New Book")
+    print("2. Read Library")
+    print("3. Update Book")
+    print("4. Search Book")
+    print("5. Delete Book")
+    print("6. Exit")
+
+    choice = input("\nEnter your choice: ")
+
+    if choice == "1":
+        append_data()
+    
+    elif choice == "2":
+        read_library()
+
+    elif choice == "3":
+        update_book()
+
+    elif choice == "4":
+        search_book()
+
+    elif choice == "5":
+        delete_book()
+    
+    elif choice == "6":
+        print("\nExiting Mini Library System...Bye.")
+        break
+
+    else:
+        print("\nInvalid choice! Please try again.")
