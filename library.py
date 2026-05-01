@@ -110,7 +110,7 @@ def search_book():
         keyword = input("\nEnter Book No. or Title to search: ")
         found = False
 
-            print("\n===== SEARCH RESULT =====\n")
+        print("\n===== SEARCH RESULT =====\n")
 
 
         for line in f:
@@ -127,3 +127,37 @@ def search_book():
         print("\nLibrary file not found! Please initialize the library first.")
 search_book()
 
+def delete_book():
+    try:
+        f = open("MLS.txt", "r")
+        lines = f.readlines()
+        f.close()
+
+        print("\n===== CURRENT BOOK LIST =====\n")
+
+        for line in lines:
+            print(line.strip())
+
+    except FileNotFoundError:
+        print("\nLibrary file not found! Please initialize the library first.")
+
+    delete_book_no = input("\nEnter Book No. to delete: ")
+    updated_lines = []
+    found = False
+
+    for line in lines:
+            if f"Book No. {delete_book_no}" not in line:
+                updated_lines.append(line)
+    else:
+        found = True
+
+        if found:
+            f = open("MLS.txt", "w")
+            f.writelines(updated_lines)
+            f.close()
+            print("\nBook deleted successfully!")
+
+        else:
+            print("\nBook not found!")
+
+delete_book()
