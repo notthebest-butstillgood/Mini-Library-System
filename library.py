@@ -68,3 +68,37 @@ def read_library():
 read_library()
 
 #STUDENT D -- update the file
+
+def update_book():
+    try:
+        f = open("MLS.txt", "r")
+        lines = f.readlines()
+        f.close()
+
+        print("\n===== CURRENT BOOK LIST =====\n")
+        for line in lines:
+            print(line.strip())
+
+        book_no = input("\nEnter Book No. to update: ")
+
+        found = False
+        updated_lines = []
+
+        for line in lines:
+            if f"Book No. {book_no}" in line:
+                new_title = input("Enter new book title: ")
+                updated_lines.append(f"Book No. {book_no} | Title: {new_title}\n")
+                found = True
+            else:
+                updated_lines.append(line)
+
+        if found:
+            f = open("MLS.txt", "w")
+            f.writelines(updated_lines)
+            f.close()
+            print("\nBook updated successfully!")
+        else:
+            print("\nBook not found!")
+
+    except FileNotFoundError:
+        print("File not found.")
