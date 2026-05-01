@@ -102,3 +102,28 @@ def update_book():
 
     except FileNotFoundError:
         print("File not found.")
+update_book()
+
+def search_book():
+    try:
+        f = open("MLS.txt", "r")
+        keyword = input("\nEnter Book No. or Title to search: ")
+        found = False
+
+            print("\n===== SEARCH RESULT =====\n")
+
+
+        for line in f:
+            if keyword.lower() in line.lower():
+                print(line.strip())
+            found = True
+
+            if not found:
+                print("Book not found!")
+
+        f.close()
+
+    except FileNotFoundError:
+        print("\nLibrary file not found! Please initialize the library first.")
+search_book()
+
