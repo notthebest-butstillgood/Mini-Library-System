@@ -3,4 +3,3 @@ Book No. 001 | Title: Learn Computer Programing
 Book No. 002 | Title: Behind the Blue Sky
 Book No. 003 | Title: Data Structure and Algorithms
 Book No. 004 | Title: The Art of Computer Programming
-Book No. 100 | Title: Hays
