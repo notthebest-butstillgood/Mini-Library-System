@@ -49,3 +49,22 @@ def append_data():
         
 append_data()
 
+#STUDENT C -- "r" and print a count of lines
+def read_library():
+    try:
+        f = open("MLS.txt", "r")
+        lines = f.readlines()
+        f.close()
+
+        print("\n=== Library Contents ===\n")
+        for line in lines:
+            print(line.strip())
+        
+        print(f"\nTotal number of books: {len(lines) - 1}") 
+
+    except FileNotFoundError:
+        print("\nLibrary file not found! Please initialize the library first.")
+
+read_library()
+
+#STUDENT D -- update the file
